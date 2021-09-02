@@ -1,2 +1,1 @@
-1. yarn
-2. node app.js
+yarn && yarn start

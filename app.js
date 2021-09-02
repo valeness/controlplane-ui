@@ -11,8 +11,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
-app.get('/api', (req, res) => {
+app.get('/submit', (req, res) => {
   console.log(req);
+  //run command w/ name here
 });
 
 app.get('/', (req, res, next) => {
@@ -20,6 +21,7 @@ app.get('/', (req, res, next) => {
   let provisionedList = {};
 
   const stdout = execSync('aws lightsail get-instances');
+  //uncomment this and delete the provisionList = {sample data} below at 27
   //provisionedList = JSON.parse(stdout);
 
   provisionedList = {
@@ -266,8 +268,6 @@ app.get('/', (req, res, next) => {
     })
   );
 
-  console.log(provisionedList);
-  console.log(templateData);
   res.render(path.join(__dirname, 'public', 'index.ejs'), {
     instances: templateData,
   });

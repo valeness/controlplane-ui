@@ -17,6 +17,7 @@ app.post('/submit', (req, res) => {
     encoding: 'utf8',
     timeout: 10000,
   });
+  res.redirect('/');
   res.end();
 });
 

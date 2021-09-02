@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Controlplane UI</title>
+    <link rel="stylesheet" href="./main.css">
+    <!-- Remove later yo --><meta http-equiv="refresh" content="5" >
+  </head>
+  <body style="min-height: 100vh">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-8-desktop is-offset-2-desktop">
+              <h1 class="title is-2">
+                Controlplane UI
+              </h1>
+              <h2 class="subtitle is-4">
+                  Some descriptive subititle <strong>woo!</strong>
+                  <br>
+                  View and provision remote tower instances.
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section is-medium">
+      <div class="container">
+        <div class="columns is-variable is-8">
+          <div class="column">
+            <div class="content">
+              <h3>View</h3>
+              <p>
+                Here are the currently provisioned instances:
+              </p>
+            </div>
+            <table class="table is-bordered is-fullwidth is-hoverable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>State</th>
+                  <th class="has-text-right">Created At</th>
+                  <th class="has-text-right">Public IP</th>
+                  <th class="has-text-right">Controls</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% instances.forEach(function(instance) { %>
+                <tr>
+                  <td><%= instance.name %></td>
+                  <td><%= instance.state %></td>
+                  <td class="has-text-right">
+                    <code><%= new Date(instance.createdAt * 1000).toLocaleDateString("en-us") %></code>
+                  </td>
+                  <td class="has-text-right"><%= instance.publicIpAddress %></td>
+                  <td>
+                    <div class="field is-grouped is-grouped-right">
+                      <p class="control">
+                        <a class="button is-small is-link" href="#">
+                          <strong class="has-text-weight-semibold">Edit</strong>
+                        </a>
+                      </p>
+                      <p class="control">
+                        <a class="button is-small is-danger" href="#">
+                          <strong class="has-text-weight-semibold">Delete</strong>
+                        </a>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+          <div class="column">
+            <div class="content">
+              <h3>Provision</h3>
+              <p>Fill out the below information:</p>
+              <form>
+                <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="FirstName LastName">
+                  </div>
+                </div>
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button is-link">Submit</button>
+                  </div>
+                  <div class="control">
+                    <button class="button is-link is-light">Clear</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer has-text-centered">
+      <div class="container">
+         <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <p>
+              <strong class="has-text-weight-semibold">
+                <a href="#">Open Console</a>
+              </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="./main.js"></script>
+  </body>
+</html>
